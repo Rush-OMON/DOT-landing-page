@@ -60,7 +60,15 @@ h1 span{color:var(--burnt)}
 .primary-btn{background:linear-gradient(135deg,var(--burnt),var(--orange));color:#fff;box-shadow:0 18px 32px rgba(255,107,53,.28)}
 .secondary-btn{background:rgba(255,255,255,.72);border:1px solid var(--line);color:var(--text)}
 .small-note{font-size:.9rem;color:var(--muted);margin-top:16px}
-.phone-stage{position:relative;min-height:650px;display:flex;align-items:center;justify-content:center}
+.phone-stage{
+  position:relative;
+  display:flex;
+  gap:24px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  padding:20px;
+}
 .glow{position:absolute;width:470px;height:470px;background:radial-gradient(circle,var(--orange),transparent 68%);filter:blur(50px);opacity:.22}
 .phone{position:absolute;width:min(290px,42vw);border-radius:38px;box-shadow:var(--shadow);border:10px solid rgba(255,255,255,.85)}
 .phone-one{transform:rotate(-6deg) translateX(-90px)}

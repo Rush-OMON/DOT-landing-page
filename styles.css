@@ -92,7 +92,7 @@ footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space
 }
 @media (max-width:560px){
   .nav,.hero,.trust-strip,.section,.feature-split,.download-panel,footer{width:min(100% - 28px,1180px)}
-  .nav{padding:10px 12px}.nav-cta{display:none}.hero{margin-bottom:40px}h1{font-size:3.35rem}.lead{font-size:1.02rem}.hero-actions{flex-direction:column}.primary-btn,.secondary-btn{width:100%}.phone-stage{min-height:auto;padding:28px 0}.phone{width:205px;border-radius:30px;border-width:7px}.phone-one{transform:rotate(-5deg) translateX(-55px)}.phone-two{transform:rotate(7deg) translate(62px,55px)}.trust-strip{margin-bottom:50px}.section{padding:44px 0}.card{padding:24px}.soft{padding:24px}.download-panel{padding:44px 18px}.footer-links{justify-content:center}
+  .nav{padding:10px 12px}.nav-cta{display:none}.hero{margin-bottom:40px}h1{font-size:3.35rem}.lead{font-size:1.02rem}.hero-actions{flex-direction:column}.primary-btn,.secondary-btn{width:100%}.phone-stage{min-height:430px;padding:28px 0;overflow:hidden}.phone{width:205px;border-radius:30px;border-width:7px}.phone-one{transform:rotate(-5deg) translateX(-55px)}.phone-two{transform:rotate(7deg) translate(62px,55px)}.trust-strip{margin-bottom:50px}.section{padding:44px 0}.card{padding:24px}.soft{padding:24px}.download-panel{padding:44px 18px}.footer-links{justify-content:center}
 }
 html, body {
   max-width: 100%;
@@ -100,5 +100,5 @@ html, body {
 }
 
 .phone-stage {
-  overflow: hidden;
+  overflow: visible;
 }

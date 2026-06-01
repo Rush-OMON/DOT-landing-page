@@ -97,13 +97,30 @@ h1 span{color:var(--burnt)}
   display:flex;
   justify-content:center;
   align-items:center;
-  width:220px;
+  width:320px;
 }
 
 .store-buttons img{
   max-width:100%;
   height:auto;
   display:block;
+}
+.hero .store-buttons{
+  margin-bottom:42px;
+}
+
+.download-panel .store-buttons{
+  align-items:center;
+  margin-top:32px;
+}
+.hero-copy{
+  position:relative;
+  z-index:3;
+}
+
+.phone-stage{
+  position:relative;
+  z-index:1;
 }
 
 .faq{padding-bottom:40px}details{margin-bottom:14px}summary{cursor:pointer;font-weight:800;font-size:1.08rem}details p{color:var(--muted);line-height:1.7;font-weight:600;margin:14px 0 0}
@@ -142,7 +159,7 @@ footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space
   display:flex;
   justify-content:center;
   align-items:center;
-  width:220px;
+  width:260px;
 }
 
 .store-buttons img{

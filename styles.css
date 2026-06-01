@@ -102,3 +102,16 @@ html, body {
 .phone-stage {
   overflow: visible;
 }
+.store-buttons{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  align-items:center;
+}
+
+.store-buttons img{
+  width:100%;
+  max-width:360px;
+  height:auto;
+  display:block;
+}

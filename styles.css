@@ -105,13 +105,17 @@ html, body {
 .store-buttons{
   display:flex;
   flex-direction:column;
-  gap:18px;
   align-items:center;
+  gap:16px;
+}
+
+.store-buttons a{
+  display:block;
+  width:280px;
 }
 
 .store-buttons img{
   width:100%;
-  max-width:360px;
   height:auto;
   display:block;
 }

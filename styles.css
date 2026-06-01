@@ -90,29 +90,22 @@ h1 span{color:var(--burnt)}
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  gap:14px;
+  gap:16px;
 }
 
 .store-buttons a{
   display:flex;
+  justify-content:center;
   align-items:center;
-  justify-content:flex-start;
-  width:260px;
+  width:220px;
 }
 
-.store-buttons .play-badge{
-  width:260px;
+.store-buttons img{
+  max-width:100%;
   height:auto;
   display:block;
-  margin-bottom:0;
 }
 
-.store-buttons .app-badge{
-  width:210px;
-  height:auto;
-  display:block;
-  margin-bottom:0;
-}
 .faq{padding-bottom:40px}details{margin-bottom:14px}summary{cursor:pointer;font-weight:800;font-size:1.08rem}details p{color:var(--muted);line-height:1.7;font-weight:600;margin:14px 0 0}
 footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space-between;gap:18px;color:var(--muted);font-weight:700}.footer-brand img{width:34px;height:34px}.footer-links{display:flex;gap:18px;flex-wrap:wrap}
 @media (max-width:900px){
@@ -139,21 +132,24 @@ footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space
   .footer-links{justify-content:center}
   
 .store-buttons{
+  display:flex;
+  flex-direction:column;
   align-items:center;
+  gap:16px;
 }
 
-.play-badge{
-  width:230px;
+.store-buttons a{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:220px;
 }
 
-.app-badge{
-  width:185px;
+.store-buttons img{
+  width:220px;
+  height:auto;
+  display:block;
 }
-
-  .store-buttons a{
-    width:230px;
-    height:68px;
-  }
 }
 html, body {
   max-width: 100%;

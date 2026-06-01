@@ -114,3 +114,8 @@ html, body {
   width:auto;
   display:block;
 }
+@media (max-width:560px){
+  .store-buttons img{
+    height:50px;
+  }
+}

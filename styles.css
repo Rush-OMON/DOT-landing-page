@@ -109,13 +109,8 @@ html, body {
   gap:16px;
 }
 
-.store-buttons a{
-  display:block;
-  width:280px;
-}
-
 .store-buttons img{
-  width:100%;
-  height:auto;
+  height:60px;
+  width:auto;
   display:block;
 }

@@ -108,6 +108,17 @@ h1 span{color:var(--burnt)}
   display:block;
   object-fit:contain;
 }
+.play-badge{
+  width:260px;
+  height:auto;
+  display:block;
+}
+
+.app-badge{
+  width:210px;
+  height:auto;
+  display:block;
+}
 .faq{padding-bottom:40px}details{margin-bottom:14px}summary{cursor:pointer;font-weight:800;font-size:1.08rem}details p{color:var(--muted);line-height:1.7;font-weight:600;margin:14px 0 0}
 footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space-between;gap:18px;color:var(--muted);font-weight:700}.footer-brand img{width:34px;height:34px}.footer-links{display:flex;gap:18px;flex-wrap:wrap}
 @media (max-width:900px){
@@ -132,10 +143,18 @@ footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space
   .soft{padding:24px}
   .download-panel{padding:44px 18px}
   .footer-links{justify-content:center}
+  
+.store-buttons{
+  align-items:center;
+}
 
-  .store-buttons{
-    align-items:center;
-  }
+.play-badge{
+  width:230px;
+}
+
+.app-badge{
+  width:185px;
+}
 
   .store-buttons a{
     width:230px;

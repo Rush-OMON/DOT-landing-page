@@ -60,11 +60,23 @@ h1 span{color:var(--burnt)}
 .primary-btn{background:linear-gradient(135deg,var(--burnt),var(--orange));color:#fff;box-shadow:0 18px 32px rgba(255,107,53,.28)}
 .secondary-btn{background:rgba(255,255,255,.72);border:1px solid var(--line);color:var(--text)}
 .small-note{font-size:.9rem;color:var(--muted);margin-top:16px}
-.phone-stage{position:relative;min-height:650px;display:flex;align-items:center;justify-content:center}
+
+.phone-stage{
+  position:relative;
+  display:flex;
+  gap:24px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  padding:20px;
+  z-index:1;
+  min-height:580px; /* Gives absolute images an explicit height grid container on Web */
+}
 .glow{position:absolute;width:470px;height:470px;background:radial-gradient(circle,var(--orange),transparent 68%);filter:blur(50px);opacity:.22}
 .phone{position:absolute;width:min(290px,42vw);border-radius:38px;box-shadow:var(--shadow);border:10px solid rgba(255,255,255,.85)}
 .phone-one{transform:rotate(-6deg) translateX(-90px)}
 .phone-two{transform:rotate(7deg) translate(125px,54px)}
+
 .trust-strip,.section,.feature-split,.download-panel,footer{width:min(1180px,calc(100% - 40px));margin-left:auto;margin-right:auto}
 .trust-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:100px}
 .trust-strip div,.card,details{background:rgba(255,255,255,.64);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:0 16px 44px rgba(171,53,0,.07)}
@@ -75,14 +87,102 @@ h1 span{color:var(--burnt)}
 .feature-split{margin-top:60px;margin-bottom:80px;padding:52px;background:var(--text);color:#fff;border-radius:var(--radius);display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;box-shadow:var(--shadow)}
 .feature-split p{color:rgba(255,255,255,.72)}.safety-list{display:grid;gap:14px}.safety-list div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:18px 20px;border-radius:20px;font-weight:800}.safety-list span{color:var(--orange);margin-right:10px}
 .soft{background:rgba(255,107,53,.08);border-radius:var(--radius);padding:54px;margin-bottom:80px}
-.download-panel{text-align:center;background:#fff;border:1px solid var(--line);border-radius:40px;padding:62px 26px;box-shadow:var(--shadow)}
-.download-panel img{width:88px;height:88px;object-fit:contain;margin-bottom:18px}.download-panel p{max-width:620px;margin:0 auto}
+
+/* --- Section 2 Download Card --- */
+.download-panel{
+  text-align:center;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:40px;
+  padding:62px 26px;
+  box-shadow:var(--shadow);
+}
+.download-panel > img{width:88px;height:88px;object-fit:contain;margin-bottom:18px}
+.download-panel p{max-width:620px;margin:0 auto 32px; /* Adds clear spacing between text and buttons */}
+
+/* --- Global Store Buttons Styles (Web Desktop First Default) --- */
+.store-buttons{
+  display:flex;
+  flex-direction:row; /* Side-by-side on desktop web views */
+  align-items:center;
+  gap:16px;
+}
+.store-buttons a{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:180px; /* Uniform layout widths on desktop web */
+}
+.store-buttons img{
+  width:100%; /* Forces SVG shapes to stretch uniformly inside their links */
+  height:auto;
+  display:block;
+}
+
+.hero .store-buttons{
+  margin-top:32px;
+  margin-bottom:48px; /* Safe space cushion ahead of the absolute graphics layer */
+}
+.download-panel .store-buttons{
+  justify-content:center;
+  margin-top:32px;
+}
+
 .faq{padding-bottom:40px}details{margin-bottom:14px}summary{cursor:pointer;font-weight:800;font-size:1.08rem}details p{color:var(--muted);line-height:1.7;font-weight:600;margin:14px 0 0}
 footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space-between;gap:18px;color:var(--muted);font-weight:700}.footer-brand img{width:34px;height:34px}.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+
+/* --- Tablets and Mid-range Devices --- */
 @media (max-width:900px){
-  .nav nav{display:none}.hero{grid-template-columns:1fr;margin-top:44px}.phone-stage{min-height:560px}.trust-strip,.three,.two,.feature-split{grid-template-columns:1fr}.feature-split{padding:32px}footer{flex-direction:column;text-align:center}.phone-one{transform:rotate(-5deg) translateX(-70px)}.phone-two{transform:rotate(6deg) translate(80px,70px)}
+  .nav nav{display:none}
+  .hero{grid-template-columns:1fr;margin-top:44px}
+  .phone-stage{min-height:560px}
+  .trust-strip,.three,.two,.feature-split{grid-template-columns:1fr}
+  .feature-split{padding:32px}
+  footer{flex-direction:column;text-align:center}
+  .phone-one{transform:rotate(-5deg) translateX(-70px)}
+  .phone-two{transform:rotate(6deg) translate(80px,70px)}
+  .hero .store-buttons{justify-content:center}
 }
+
+/* --- Mobile Devices Smart Layouts --- */
 @media (max-width:560px){
   .nav,.hero,.trust-strip,.section,.feature-split,.download-panel,footer{width:min(100% - 28px,1180px)}
-  .nav{padding:10px 12px}.nav-cta{display:none}.hero{margin-bottom:40px}h1{font-size:3.35rem}.lead{font-size:1.02rem}.hero-actions{flex-direction:column}.primary-btn,.secondary-btn{width:100%}.phone-stage{min-height:430px}.phone{width:205px;border-radius:30px;border-width:7px}.phone-one{transform:rotate(-5deg) translateX(-55px)}.phone-two{transform:rotate(7deg) translate(62px,55px)}.trust-strip{margin-bottom:50px}.section{padding:44px 0}.card{padding:24px}.soft{padding:24px}.download-panel{padding:44px 18px}.footer-links{justify-content:center}
+  .nav{padding:10px 12px}
+  .nav-cta{display:none}
+  .hero{margin-bottom:40px}
+  h1{font-size:3.35rem}
+  .lead{font-size:1.02rem}
+  .hero-actions{flex-direction:column}
+  .primary-btn,.secondary-btn{width:100%}
+  .phone-stage{min-height:430px;padding:28px 0;overflow:hidden}
+  .phone{width:205px;border-radius:30px;border-width:7px}
+  .phone-one{transform:rotate(-5deg) translateX(-55px)}
+  .phone-two{transform:rotate(7deg) translate(62px,55px)}
+  .trust-strip{margin-bottom:50px}
+  .section{padding:44px 0}
+  .card{padding:24px}
+  .soft{padding:24px}
+  .download-panel{padding:44px 18px}
+  .footer-links{justify-content:center}
+  
+  .store-buttons{
+    flex-direction:column; /* Stacked vertical on mobile sizes */
+    align-items:center;
+    gap:14px;
+  }
+  .store-buttons a{
+    width:210px; /* Clean mobile sizing scale */
+  }
+  .store-buttons img{
+    width:100%;
+    height:auto;
+  }
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.phone-stage {
+  overflow: visible;
 }

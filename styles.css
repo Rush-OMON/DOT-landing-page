@@ -35,7 +35,7 @@ a{color:inherit;text-decoration:none}
   -webkit-backdrop-filter:blur(18px);
   position:sticky;
   top:16px;
-  z-index:100;
+  z-index:999; /* Higher priority to float over everything */
   box-shadow:0 12px 30px rgba(32,27,20,.06);
 }
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.4rem;letter-spacing:-.03em}
@@ -47,7 +47,7 @@ a{color:inherit;text-decoration:none}
 }
 .nav-cta{background:var(--text);color:#fff;min-height:44px;font-size:.9rem}
 
-/* --- Hero Section --- */
+/* --- Hero Layout --- */
 .hero{
   width:min(1180px,calc(100% - 40px));
   margin:68px auto 90px;
@@ -66,7 +66,7 @@ h1 span{color:var(--burnt)}
 .secondary-btn{background:rgba(255,255,255,.72);border:1px solid var(--line);color:var(--text)}
 .small-note{font-size:.9rem;color:var(--muted);margin-top:16px}
 
-/* --- Phone Graphics Presentation Stage --- */
+/* --- Phone Stage Graphics --- */
 .phone-stage{
   position:relative;
   display:flex;
@@ -76,6 +76,7 @@ h1 span{color:var(--burnt)}
   flex-wrap:wrap;
   padding:20px;
   z-index:1;
+  min-height:580px; 
 }
 .glow{position:absolute;width:470px;height:470px;background:radial-gradient(circle,var(--orange),transparent 68%);filter:blur(50px);opacity:.22}
 .phone{position:absolute;width:min(290px,42vw);border-radius:38px;box-shadow:var(--shadow);border:10px solid rgba(255,255,255,.85)}
@@ -93,43 +94,50 @@ h1 span{color:var(--burnt)}
 .feature-split{margin-top:60px;margin-bottom:80px;padding:52px;background:var(--text);color:#fff;border-radius:var(--radius);display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;box-shadow:var(--shadow)}
 .feature-split p{color:rgba(255,255,255,.72)}.safety-list{display:grid;gap:14px}.safety-list div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:18px 20px;border-radius:20px;font-weight:800}.safety-list span{color:var(--orange);margin-right:10px}
 .soft{background:rgba(255,107,53,.08);border-radius:var(--radius);padding:54px;margin-bottom:80px}
-.download-panel{text-align:center;background:#fff;border:1px solid var(--line);border-radius:40px;padding:62px 26px;box-shadow:var(--shadow)}
-.download-panel > img{width:88px;height:88px;object-fit:contain;margin-bottom:18px}.download-panel p{max-width:620px;margin:0 auto}
 
-/* --- Store Action Link Buttons --- */
+/* --- Section 2 Download Card --- */
+.download-panel{
+  text-align:center;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:40px;
+  padding:62px 26px;
+  box-shadow:var(--shadow);
+}
+.download-panel > img{width:88px;height:88px;object-fit:contain;margin-bottom:18px}
+.download-panel p{max-width:620px;margin:0 auto 32px;}
+
+/* --- Global Store Buttons Styles (Web Desktop First) --- */
 .store-buttons{
   display:flex;
-  flex-direction:column;
-  align-items:flex-start;
+  flex-direction:row; 
+  align-items:center;
   gap:16px;
 }
 .store-buttons a{
   display:flex;
   justify-content:center;
   align-items:center;
-  width:320px;
+  width:180px; 
 }
 .store-buttons img{
-  max-width:100%;
+  width:100%; 
   height:auto;
   display:block;
 }
 .hero .store-buttons{
-  margin-bottom:42px;
+  margin-top:32px;
+  margin-bottom:48px; 
 }
 .download-panel .store-buttons{
-  align-items:center;
+  justify-content:center;
   margin-top:32px;
-}
-.hero-copy{
-  position:relative;
-  z-index:3;
 }
 
 .faq{padding-bottom:40px}details{margin-bottom:14px}summary{cursor:pointer;font-weight:800;font-size:1.08rem}details p{color:var(--muted);line-height:1.7;font-weight:600;margin:14px 0 0}
 footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space-between;gap:18px;color:var(--muted);font-weight:700}.footer-brand img{width:34px;height:34px}.footer-links{display:flex;gap:18px;flex-wrap:wrap}
 
-/* --- Media Breakpoints --- */
+/* --- Tablets and Mid-range Devices --- */
 @media (max-width:900px){
   .nav nav{display:none}
   .hero{grid-template-columns:1fr;margin-top:44px}
@@ -139,9 +147,12 @@ footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space
   footer{flex-direction:column;text-align:center}
   .phone-one{transform:rotate(-5deg) translateX(-70px)}
   .phone-two{transform:rotate(6deg) translate(80px,70px)}
+  .hero .store-buttons{justify-content:center}
 }
 
+/* --- Mobile Devices Smart Layouts --- */
 @media (max-width:560px){
+  /* Kept structural chains clear of overflow hidden rules */
   .nav,.hero,.trust-strip,.section,.feature-split,.download-panel,footer{width:min(100% - 28px,1180px)}
   .nav{
     padding:10px 12px;
@@ -154,6 +165,8 @@ footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space
   .lead{font-size:1.02rem}
   .hero-actions{flex-direction:column}
   .primary-btn,.secondary-btn{width:100%}
+  
+  /* Contained layout limits safely to this inner graphical frame */
   .phone-stage{min-height:430px;padding:28px 0;overflow:hidden}
   .phone{width:205px;border-radius:30px;border-width:7px}
   .phone-one{transform:rotate(-5deg) translateX(-55px)}
@@ -166,29 +179,20 @@ footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space
   .footer-links{justify-content:center}
   
   .store-buttons{
-    display:flex;
-    flex-direction:column;
+    flex-direction:column; 
     align-items:center;
-    gap:16px;
+    gap:14px;
   }
   .store-buttons a{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    width:260px;
+    width:210px; 
   }
   .store-buttons img{
-    width:220px;
+    width:100%;
     height:auto;
-    display:block;
   }
 }
 
-/* --- Layout Protection Base --- */
+/* --- Removed overflow-x hidden properties from html/body here --- */
 html, body {
   max-width: 100%;
-  overflow-x: hidden;
-}
-.phone-stage {
-  overflow: visible;
 }

@@ -47,7 +47,7 @@ a{color:inherit;text-decoration:none}
 }
 .nav-cta{background:var(--text);color:#fff;min-height:44px;font-size:.9rem}
 
-/* --- Hero Layout --- */
+/* --- Hero Layout (Side-by-Side Columns for Desktop) --- */
 .hero{
   width:min(1180px,calc(100% - 40px));
   margin:68px auto 90px;
@@ -136,6 +136,10 @@ h1 span{color:var(--burnt)}
   justify-content:center;
   margin-top:32px;
 }
+.hero-copy{
+  position:relative;
+  z-index:3;
+}
 
 .faq{padding-bottom:40px}details{margin-bottom:14px}summary{cursor:pointer;font-weight:800;font-size:1.08rem}details p{color:var(--muted);line-height:1.7;font-weight:600;margin:14px 0 0}
 footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space-between;gap:18px;color:var(--muted);font-weight:700}.footer-brand img{width:34px;height:34px}.footer-links{display:flex;gap:18px;flex-wrap:wrap}
@@ -153,7 +157,7 @@ footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space
   .hero .store-buttons{justify-content:center}
 }
 
-/* --- Mobile Devices Smart Layouts --- */
+/* --- Mobile Devices Layouts --- */
 @media (max-width:560px){
   .nav,.hero,.trust-strip,.section,.feature-split,.download-panel,footer{width:min(100% - 28px,1180px)}
   .nav{
@@ -168,7 +172,6 @@ footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space
   .hero-actions{flex-direction:column}
   .primary-btn,.secondary-btn{width:100%}
   
-  /* FIXED: Changed overflow from hidden to visible so absolute mockups show completely */
   .phone-stage{min-height:430px;padding:28px 0;overflow:visible}
   .phone{width:205px;border-radius:30px;border-width:7px}
   .phone-one{transform:rotate(-5deg) translateX(-55px)}

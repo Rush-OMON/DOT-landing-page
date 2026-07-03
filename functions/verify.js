@@ -11,9 +11,9 @@ export async function onRequestGet(context) {
   }
 
   try {
-    // Step 1: Find user with matching verification token
+    // Step 1: Find user with matching verification token (Updated URL)
     const searchRes = await fetch(
-      `https://dot-52170.bubbleapps.io/api/1.1/obj/user?constraints=[{"key":"verification_token_text","constraint_type":"equals","value":"${token}"}]`,
+      `https://dot-52170.bubbleapps.io/version-test/api/1.1/obj/user?constraints=[{"key":"verification_token_text","constraint_type":"equals","value":"${token}"}]`,
       {
         headers: {
           Authorization: `Bearer ${apiKey}`,
@@ -32,9 +32,9 @@ export async function onRequestGet(context) {
 
     const userId = users[0]._id;
 
-    // Step 2: Set email_verified1 to true
+    // Step 2: Set email_verified1 to true (Updated URL)
     const updateRes = await fetch(
-      `https://dot-52170.bubbleapps.io/api/1.1/obj/user/${userId}`,
+      `https://dot-52170.bubbleapps.io/version-test/api/1.1/obj/user/${userId}`,
       {
         method: "PATCH",
         headers: {

@@ -11,7 +11,7 @@ export async function onRequestGet(context) {
   }
 
   try {
-    // Step 1: Find user with matching verification token (Updated constraint key)
+    // Step 1: Find user with matching verification token
     const searchRes = await fetch(
       `https://dot-52170.bubbleapps.io/version-test/api/1.1/obj/user?constraints=[{"key":"verification_token","constraint_type":"equals","value":"${token}"}]`,
       {
@@ -32,7 +32,7 @@ export async function onRequestGet(context) {
 
     const userId = users[0]._id;
 
-    // Step 2: Set email_verified to true (Updated field name)
+    // Step 2: Set email_verified to true
     const updateRes = await fetch(
       `https://dot-52170.bubbleapps.io/version-test/api/1.1/obj/user/${userId}`,
       {
@@ -48,6 +48,19 @@ export async function onRequestGet(context) {
     if (!updateRes.ok) {
       throw new Error("Failed to update user");
     }
+
+    // Step 3: Clear the verification token
+    await fetch(
+      `https://dot-52170.bubbleapps.io/version-test/api/1.1/obj/user/${userId}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ verification_token: "" }),
+      }
+    );
 
     return new Response(renderPage("Email Verified ✓", "Your email has been successfully verified. You can now return to the app.", true), {
       headers: { "Content-Type": "text/html" },

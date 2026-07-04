@@ -1,4 +1,5 @@
 export async function onRequestGet(context) {
+  // Pulls the secret from your Cloudflare dashboard environment variables
   const apiKey = context.env.BUBBLE_API_KEY;
   const url = new URL(context.request.url);
   const token = url.searchParams.get("token");
@@ -10,8 +11,9 @@ export async function onRequestGet(context) {
   }
 
   try {
+    // Step 1: Find user with matching verification token (Live Version)
     const searchRes = await fetch(
-      `https://dot-52170.bubbleapps.io/version-test/api/1.1/obj/user?constraints=[{"key":"verification_token","constraint_type":"equals","value":"${token}"}]`,
+      `https://dot-52170.bubbleapps.io/version-live/api/1.1/obj/user?constraints=[{"key":"verification_token","constraint_type":"equals","value":"${token}"}]`,
       { headers: { Authorization: `Bearer ${apiKey}` } }
     );
 
@@ -26,9 +28,9 @@ export async function onRequestGet(context) {
 
     const userId = users[0]._id;
 
-    // Step 2: Set email_verified to true
+    // Step 2: Set email_verified to true (Live Version)
     const updateRes = await fetch(
-      `https://dot-52170.bubbleapps.io/version-test/api/1.1/obj/user/${userId}`,
+      `https://dot-52170.bubbleapps.io/version-live/api/1.1/obj/user/${userId}`,
       {
         method: "PATCH",
         headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
@@ -38,9 +40,9 @@ export async function onRequestGet(context) {
 
     if (!updateRes.ok) throw new Error("Failed to update user");
 
-    // Step 3: Clear the verification token
+    // Step 3: Clear the verification token (Live Version)
     await fetch(
-      `https://dot-52170.bubbleapps.io/version-test/api/1.1/obj/user/${userId}`,
+      `https://dot-52170.bubbleapps.io/version-live/api/1.1/obj/user/${userId}`,
       {
         method: "PATCH",
         headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },

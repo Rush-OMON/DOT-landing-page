@@ -1,0 +1,407 @@
+:root{
+  --orange:#FF6B35;
+  --burnt:#AB3500;
+  --cream:#FFF4E8;
+  --text:#201B14;
+  --muted:#6E6259;
+  --card:#FFFFFF;
+  --soft:#FFE5D8;
+  --line:rgba(171,53,0,.14);
+  --shadow:0 24px 70px rgba(171,53,0,.16);
+  --radius:32px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--cream);
+  color:var(--text);
+}
+a{color:inherit;text-decoration:none}
+
+/* --- Floating Navigation Card --- */
+.nav{
+  width:min(1180px,calc(100% - 40px));
+  margin:22px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 18px;
+  background:rgba(255,255,255,.62);
+  border:1px solid var(--line);
+  border-radius:999px;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  position:sticky;
+  top:16px;
+  z-index:999;
+  box-shadow:0 12px 30px rgba(32,27,20,.06);
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.4rem;letter-spacing:-.03em}
+.brand img{width:38px;height:38px;object-fit:contain}
+
+/* Targets desktop navigation specifically */
+.nav nav.desktop-menu{display:flex;gap:28px;color:var(--muted);font-weight:700;font-size:.95rem}
+
+.nav-cta,.primary-btn,.secondary-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:54px;padding:0 24px;border-radius:999px;font-weight:800;
+}
+.nav-cta{background:var(--text);color:#fff;min-height:44px;font-size:.9rem}
+
+/* --- NEW: Mobile Menu Hamburger Toggle Trigger --- */
+.menu-toggle {
+  display: none; /* Hidden on desktop */
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001; /* Renders cleanly above overlay panel */
+}
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2.5px;
+  background-color: var(--text);
+  border-radius: 999px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* --- NEW: Mobile Dynamic Drawer Overlay --- */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 82px; /* Sits directly beneath your floating navbar profile */
+  left: 50%;
+  transform: translateX(-50%) translateY(-15px);
+  width: min(1180px, calc(100% - 40px));
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 36px 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.menu-divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  width: 100%;
+  margin: 8px 0;
+}
+.mobile-links a {
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+.mobile-links a:hover {
+  color: var(--burnt);
+}
+
+/* Toggle Interaction Animation Performance Parameters */
+.mobile-menu-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.menu-toggle.is-active span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.menu-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.is-active span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* --- Hero Layout (Side-by-Side Grid columns for Desktop view) --- */
+.hero{
+  width:min(1180px,calc(100% - 40px));
+  margin:68px auto 90px;
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:50px;
+  align-items:center;
+}
+.hero-copy{
+  position:relative;
+  z-index:3;
+}
+.eyebrow{color:var(--burnt);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;margin:0 0 16px}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(3.2rem,5vw,4.8rem);line-height:.96;letter-spacing:-.06em;margin-bottom:26px}
+h1 span{color:var(--burnt)}
+.lead{font-size:1.18rem;line-height:1.75;color:var(--muted);max-width:600px;font-weight:600}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}.center{justify-content:center}
+.primary-btn{background:linear-gradient(135deg,var(--burnt),var(--orange));color:#fff;box-shadow:0 18px 32px rgba(255,107,53,.28)}
+.secondary-btn{background:rgba(255,255,255,.72);border:1px solid var(--line);color:var(--text)}
+.small-note{font-size:.9rem;color:var(--muted);margin-top:16px}
+
+/* --- Phone Stage Graphics Layout Frame --- */
+.phone-stage{
+  position:relative;
+  display:flex;
+  gap:24px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  padding:20px;
+  z-index:1;
+  min-height:580px; 
+}
+.glow{position:absolute;width:470px;height:470px;background:radial-gradient(circle,var(--orange),transparent 68%);filter:blur(50px);opacity:.22}
+.phone{position:absolute;width:min(290px,42vw);border-radius:38px;box-shadow:var(--shadow);border:10px solid rgba(255,255,255,.85)}
+.phone-one{transform:rotate(-6deg) translateX(-90px)}
+.phone-two{transform:rotate(7deg) translate(125px,54px)}
+
+.trust-strip,.section,.feature-split,.download-panel,footer{width:min(1180px,calc(100% - 40px));margin-left:auto;margin-right:auto}
+.trust-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:100px}
+.trust-strip div,.card,details{background:rgba(255,255,255,.64);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:0 16px 44px rgba(171,53,0,.07)}
+.trust-strip strong,.trust-strip span{display:block}.trust-strip strong{font-size:1.05rem;margin-bottom:6px}.trust-strip span{color:var(--muted);line-height:1.55}
+.section{padding:70px 0}
+.section-head{max-width:720px;margin-bottom:32px}
+.section h2,.feature-split h2,.download-panel h2{font-size:clamp(2rem,4vw,3.5rem);line-height:1.05;letter-spacing:-.06em;margin-bottom:18px}
+.section-head p:not(.eyebrow),.feature-split p,.download-panel p{color:var(--muted);line-height:1.7;font-weight:600}
+.cards{display:grid;gap:18px}.three{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:repeat(2,1fr)}
+.card{padding:32px}
+.step{display:inline-flex;background:rgba(255,107,53,.12);color:var(--burnt);font-weight:900;border-radius:999px;padding:8px 12px;margin-bottom:34px}.card h3{font-size:1.45rem;letter-spacing:-.04em}.card p{color:var(--muted);line-height:1.75;font-weight:600}.large{min-height:230px}
+.feature-split{margin-top:60px;margin-bottom:80px;padding:52px;background:var(--text);color:#fff;border-radius:var(--radius);display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;box-shadow:var(--shadow)}
+.feature-split p{color:rgba(255,255,255,.72)}.safety-list{display:grid;gap:14px}.safety-list div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:18px 20px;border-radius:20px;font-weight:800}.safety-list span{color:var(--orange);margin-right:10px}
+.soft{background:rgba(255,107,53,.08);border-radius:var(--radius);padding:54px;margin-bottom:80px}
+
+/* --- Section 2 Download Card --- */
+.download-panel{
+  text-align:center;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:40px;
+  padding:62px 26px;
+  box-shadow:var(--shadow);
+}
+.download-panel > img{width:88px;height:88px;object-fit:contain;margin-bottom:18px}
+.download-panel p{max-width:620px;margin:0 auto 32px;}
+
+/* --- Uniform Store App Download Buttons --- */
+.store-buttons{
+  display:flex;
+  flex-direction:row; 
+  align-items:center;
+  gap:16px;
+}
+.store-buttons a{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:180px; 
+}
+.store-buttons img{
+  width:100%; 
+  height:auto;
+  display:block;
+}
+.hero .store-buttons{
+  margin-top:32px;
+  margin-bottom:48px; 
+}
+.download-panel .store-buttons{
+  justify-content:center;
+  margin-top:32px;
+}
+
+.faq{padding-bottom:40px}details{margin-bottom:14px}summary{cursor:pointer;font-weight:800;font-size:1.08rem}details p{color:var(--muted);line-height:1.7;font-weight:600;margin:14px 0 0}
+footer{padding:52px 0 70px;display:flex;align-items:center;justify-content:space-between;gap:18px;color:var(--muted);font-weight:700}.footer-brand img{width:34px;height:34px}.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+
+/* --- Tablets & Medium Scale Screens Breakpoint --- */
+@media (max-width:960px){
+  .nav nav.desktop-menu{display:none} /* Hides the inline list menu links */
+  .nav-cta{display:none} /* Hides header CTA on tablet/mobile views */
+  .menu-toggle{display:flex} /* Instantly shows hamburger trigger */
+  
+  .hero{grid-template-columns:1fr;margin-top:44px;gap:20px}
+  .phone-stage{min-height:560px}
+  .trust-strip,.three,.two,.feature-split{grid-template-columns:1fr}
+  .feature-split{padding:32px}
+  footer{flex-direction:column;text-align:center}
+  .phone-one{transform:rotate(-5deg) translateX(-70px)}
+  .phone-two{transform:rotate(6deg) translate(80px,70px)}
+  .hero .store-buttons{justify-content:center}
+}
+
+/* --- Mobile Phone Scale Smart Views Layout --- */
+@media (max-width:560px){
+  .nav,.hero,.trust-strip,.section,.feature-split,.download-panel,footer{width:min(100% - 28px,1180px)}
+  .nav{
+    padding:10px 12px;
+    position:sticky;
+    top:16px;
+  }
+  .mobile-menu-overlay {
+    width: calc(100% - 28px);
+    top: 68px; /* Perfectly realigns overlay dropdown panel anchor coordinates */
+  }
+  .hero{margin-bottom:40px}
+  h1{font-size:3.35rem}
+  .lead{font-size:1.02rem}
+  .hero-actions{flex-direction:column}
+  .primary-btn,.secondary-btn{width:100%}
+  
+  /* Retains visible boundaries so mockups don't crop at the base */
+  .phone-stage{min-height:430px;padding:28px 0;overflow:visible}
+  .phone{width:205px;border-radius:30px;border-width:7px}
+  .phone-one{transform:rotate(-5deg) translateX(-55px)}
+  .phone-two{transform:rotate(7deg) translate(62px,55px)}
+  .trust-strip{margin-bottom:50px}
+  .section{padding:44px 0}
+  .card{padding:24px}
+  .soft{padding:24px}
+  .download-panel{padding:44px 18px}
+  .footer-links{justify-content:center}
+  
+  .store-buttons{
+    flex-direction:column; 
+    align-items:center;
+    gap:14px;
+  }
+  .store-buttons a{
+    width:210px; 
+  }
+  .store-buttons img{
+    width:100%;
+    height:auto;
+  }
+}
+
+/* --- Prevent Horizontal Frame Trembling --- */
+html, body {
+  max-width: 100%;
+}
+
+/*==================================================
+PRELOADER
+==================================================*/
+.preloader{
+  position:fixed;
+  inset:0;
+  background:var(--cream);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+  transition:opacity .6s ease, visibility .6s ease;
+}
+.preloader-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+}
+.preloader-logo{
+  width:64px;
+  height:64px;
+  object-fit:contain;
+  animation:preloaderPulse 1.6s ease-in-out infinite;
+}
+.loader-bar{
+  width:150px;
+  height:4px;
+  border-radius:999px;
+  background:rgba(171,53,0,.14);
+  overflow:hidden;
+  position:relative;
+}
+.loader-bar::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-40%;
+  width:40%;
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--burnt),var(--orange));
+  animation:loaderSlide 1.2s ease-in-out infinite;
+}
+.preloader.loaded{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+@keyframes loaderSlide{
+  0%{left:-40%}
+  50%{left:60%}
+  100%{left:100%}
+}
+@keyframes preloaderPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+}
+
+/*==================================================
+SCROLL REVEAL (fade + slide on scroll into view)
+==================================================*/
+.reveal,.reveal-left,.reveal-right{
+  opacity:0;
+  transition:opacity .8s ease, transform .8s ease;
+}
+.reveal{transform:translateY(50px)}
+.reveal-left{transform:translateX(-60px)}
+.reveal-right{transform:translateX(60px)}
+.reveal.show,.reveal-left.show,.reveal-right.show{
+  opacity:1;
+  transform:translateY(0) translateX(0);
+}
+/* Staggered card reveal */
+.cards .card:nth-child(1){transition-delay:.05s}
+.cards .card:nth-child(2){transition-delay:.18s}
+.cards .card:nth-child(3){transition-delay:.31s}
+.trust-strip > div:nth-child(1){transition-delay:.05s}
+.trust-strip > div:nth-child(2){transition-delay:.18s}
+.trust-strip > div:nth-child(3){transition-delay:.31s}
+.safety-list > div:nth-child(1){transition-delay:.05s}
+.safety-list > div:nth-child(2){transition-delay:.15s}
+.safety-list > div:nth-child(3){transition-delay:.25s}
+.safety-list > div:nth-child(4){transition-delay:.35s}
+
+/*==================================================
+ABOVE-THE-FOLD ENTRANCE (plays once, right after preload)
+==================================================*/
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+body.is-loaded .hero-copy{animation:fadeUp 1s ease both}
+body.is-loaded .phone-stage{animation:fadeUp 1.1s ease .15s both}
+body.is-loaded .paper{animation:fadeUp .9s ease both}
+
+/*==================================================
+BUTTON PRESS EFFECT (site-wide)
+==================================================*/
+.primary-btn,.secondary-btn,.nav-cta,.cta,.menu-toggle,.store-buttons a,.footer-links a{
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.primary-btn:active,.secondary-btn:active,.nav-cta:active,.cta:active,.menu-toggle:active,.store-buttons a:active{
+  transform:scale(.94);
+}
+.cta{
+  display:inline-flex;
+  background:linear-gradient(135deg,var(--burnt),var(--orange));
+  color:#fff;
+  border-radius:999px;
+  padding:15px 22px;
+  font-weight:900;
+  margin-top:16px;
+  box-shadow:0 14px 30px rgba(255,107,53,.28);
+}
